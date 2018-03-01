@@ -9,7 +9,7 @@ rule "SafeAdults"
 
     when
         $driver : Driver(age > 24, numberOfAccidents < 1, numberOfTickets <= 1, $id : id)
-        $policy : Policy(price == 0, policyType == "CAR", driver == $id)
+        $policy : Policy(price == 0, policyType == "CAR", driver.id == $id)
     then
         //actions
         modify($policy) {setPrice(120)};
